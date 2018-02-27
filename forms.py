@@ -18,6 +18,10 @@ class AddPlanning(FlaskForm):
                          validators=[DataRequired()])
 
 
+class AddTask(FlaskForm):
+    """Add Task to your planning"""
+
+
 def planning_exists(form, field):
     if Planning.select().where(Planning.planning_name == field.data).exists():
         raise ValidationError('User with that name already exists.')

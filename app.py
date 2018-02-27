@@ -2,7 +2,7 @@
 from flask import Flask, g, render_template, redirect, url_for, flash
 from peewee import *
 from datetime import timedelta, date
-import datetime
+
 
 import forms
 import models
@@ -60,7 +60,8 @@ def planning(planning_name):
                            created_at=planning.Created_at.date(),
                            status=planning.status,
                            days_left=((planning.end_date.date() -
-                                       date.today()).days)
+                                       date.today()).days),
+                           dates=date_range(planning.start_date, planning.end_date)
                            )
 
 
@@ -70,13 +71,11 @@ def remove_planning():
 
 
 def date_range(begin_date, end_date):
-    num_date = {}
-    daynum = 0
+    dates = []
     while begin_date != end_date:
-        num_date.update({daynum: str(begin_date)})
-        daynum += 1
+        dates.append(str(begin_date.date()))
         begin_date += timedelta(days=1)
-    return num_date
+    return dates
 
 
 if __name__ == '__main__':

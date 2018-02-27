@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% from 'macros.html' import render_dates %}
 <html>
     <head>
         <meta charset="utf-8">
@@ -11,9 +12,11 @@
             <div class="grid-container">
                 <div>hello</div>
                 <div id="created_at">{{ created_at }}</div>
-                <div>{{ days_left }} Left</div>
+                <div>{{ days_left }} day(s) Left</div>
             </div>
             <div id='Status'>{{ status }}</div>
         </header>
+        {{ render_dates(dates) }}
+
     </body>
 </html>

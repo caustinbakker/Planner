@@ -8,3 +8,14 @@
         {{ field(placeholder=field.label.text) }}
     </div>
 {% endmacro %}
+
+
+{% macro render_dates(dates) %}
+    <ul>
+        {% for date in dates %}
+            <li>
+                <div class="">{{ date }}</div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endmacro %}
