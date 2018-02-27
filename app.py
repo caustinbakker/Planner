@@ -41,13 +41,24 @@ def create_planning():
             )
         except ValueError:
             flash('planning exists', 'error')
-        return redirect(url_for('planning', planning_name='test planning'))
+        return redirect(url_for('planning',
+                                planning_name=form.planning_name.data))
     return render_template('create_planning.html', form=form)
 
 
 @app.route('/planning/<planning_name>')
 def planning(planning_name):
-    return render_template("planning.html", planning_name=planning_name)
+    try:
+        planning = models.Planning.get(models.Planning.planning_name ==
+                                       planning_name)
+    except DoesNotExist:
+        flash('Planning does not exist', 'error')
+        return redirect(url_for('create_planning'))
+    return render_template("planning.html",
+                           planning_name=planning.planning_name,
+                           created_at=planning.Created_at,
+                           status=planning.status
+                           )
 
 
 @app.route('/remove_planning')

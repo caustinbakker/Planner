@@ -3,10 +3,13 @@
     <head>
         <meta charset="utf-8">
         <title>{{ planning_name }}</title>
+        <link rel="stylesheet" type="text/css" href="/static/styles.css">
     </head>
     <body>
-        <ul>
+        <div id='planning_name'>
             {{ planning_name }}
-        </ul>
+        </div>
+        created_at : {{ created_at }}
+        Status : {{ status }}
     </body>
 </html>
