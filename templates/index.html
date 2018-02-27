@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% from 'macros.html' import render_field %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> {{ planning }} | {{ username }}</title>
+        <link rel="stylesheet" type="text/css" href="/static/styles.css">
+    </head>
+    <body>
+        <div class = 'time_line'></div>
+        <div class="">
+            {{ begin_date }} | {{ end_date }}
+        </div>
+        <ul>
+            {% if dates != 0 %}
+                {% for num,date in dates.items() %}
+                <li class="grid-container">
+                    <div class="grid-item">
+                        <div id = 'amount_tasks'>
+                        {{ amount_tasks }} task(s)
+                        </div>
+                    </div>
+                    <div class="grid-item" id = 'circle'>{{ num }}</div>
+                    <div class="grid-item" id = 'date_display'>{{ date }}</div>
+                </li>
+                {% endfor %}
+            {% endif %}
+        </ul>
+    </body>
+</html>

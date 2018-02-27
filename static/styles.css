@@ -1,0 +1,73 @@
+    .dates{
+    }
+    body{
+        text-align: center;
+        height: 100%;
+        border-width: 1px;
+    }
+    .items{
+        width:13%
+        margin:0px;
+    }
+    ul{
+        position: relative;
+        padding: 0%;
+        z-index: 100;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: 33% auto 33%;
+      padding: 10px;
+    }
+    .grid-item {
+      padding: 20px;
+      font-size: 30px;
+      text-align: center;
+    }
+    #circle{
+        border: 0.5px solid black;
+        border-radius:100%;
+        width: 30px;
+        height: 30px;
+        margin: auto;
+        transition-duration: 1s;
+        transform: scale(1);
+        z-index: 1;
+        background-color: white;
+        padding: 10px;
+    }
+    #circle:hover{
+        border-color: red;
+        transition-duration: 1s;
+        transform: scale(1.5);
+        user-select: none;
+    }
+    #circle:hover ~ #date_display{
+        transition-duration: 3s;
+        opacity:100;
+        color: blue;
+    }
+    #circle:hover ~ #amount_tasks{
+        color: blue;
+        background-color: white;
+    }
+    .time_line{
+      width:0.5px;
+      background:black;
+      position:absolute;
+      z-index:-10;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 25px;
+      left: 0;
+      right: 0;
+      min-height: 100%;
+    }
+    #date_display{
+        opacity:0;
+    }
+    #amount_tasks{
+        color: green;
+        font-size: 15px;
+        background-color: red;
+    }
