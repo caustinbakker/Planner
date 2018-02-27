@@ -9,6 +9,7 @@ header{
     background: #202020;
     color: white;
     padding-top: 5px;
+    padding-bottom: 10px;
 }
 h1{
     padding: 0;
@@ -22,4 +23,24 @@ h1{
   padding: 20px;
   font-size: 30px;
   text-align: center;
+}
+ul, li{
+list-style-type: none;
+text-align: center;
+}
+ul{
+    padding: 0;
+    margin: 0;
+    margin-top: 20px;
+}
+#time_bar_container{
+    margin: 20px 0px 10px 0px;
+    background: white;
+    height: 50px;
+}
+#time_bar{
+    height: inherit;
+    background: blue;
+    width: 1%;
+    float: left;
 }

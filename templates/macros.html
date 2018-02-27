@@ -19,3 +19,9 @@
         {% endfor %}
     </ul>
 {% endmacro %}
+
+{% macro render_load_bar(procent) %}
+    {% for x in range(procent) %}
+        <div id='time_bar'></div>
+    {% endfor %}
+{% endmacro %}

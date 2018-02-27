@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% from 'macros.html' import render_dates %}
+{% from 'macros.html' import render_dates, render_load_bar %}
 <html>
     <head>
         <meta charset="utf-8">
@@ -14,7 +14,7 @@
                 <div id="created_at">{{ created_at }}</div>
                 <div>{{ days_left }} day(s) Left</div>
             </div>
-            <div id='Status'>{{ status }}</div>
+            <div id='time_bar_container'>{{ render_load_bar(procent) }}</div>
         </header>
         {{ render_dates(dates) }}
 

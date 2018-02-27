@@ -61,7 +61,11 @@ def planning(planning_name):
                            status=planning.status,
                            days_left=((planning.end_date.date() -
                                        date.today()).days),
-                           dates=date_range(planning.start_date, planning.end_date)
+                           dates=date_range(planning.start_date,
+                                            planning.end_date),
+                           procent=int((100 / len((date_range(planning.start_date, planning.end_date))))) * ((date.today() - planning.start_date.date()).days)
+                           #procent = ((date.today() - planning.start_date.date()).days)
+                           #procent = (planning.start_date.date() - date.today()).days
                            )
 
 
