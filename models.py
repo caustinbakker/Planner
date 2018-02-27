@@ -1,4 +1,3 @@
-from flask_login import UserMixin
 from peewee import *
 import datetime
 
@@ -12,7 +11,7 @@ class Planning(Model):
     Created_at = DateTimeField(default=datetime.datetime.now)
     status = IntegerField(default=0)
 
-    class Meta:
+    class Meta(object):
         database = db
 
     @classmethod
@@ -21,8 +20,8 @@ class Planning(Model):
             cls.create(
                 planning_name=planning_name,
                 start_date=start_date,
-                end_date=end_date,
-                )
+                end_date=end_date
+            )
         except IntegrityError:
             raise ValueError("Planning already exists")
 

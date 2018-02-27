@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
-from flask import Flask, g, render_template, redirect, url_for, request, flash
+from flask import Flask, g, render_template, redirect, url_for, flash
 from peewee import *
-import datetime
-from datetime import datetime, timedelta
-
+from datetime import timedelta
 
 import forms
 import models
@@ -42,15 +40,14 @@ def create_planning():
                 end_date=form.end_date.data
             )
         except ValueError:
-            flash('planning exists', succcess)
-        return redirect(url_for('planning',
-                                planning_name=form.planning_name.data))
+            flash('planning exists', 'error')
+        return redirect(url_for('planning', planning_name='test planning'))
     return render_template('create_planning.html', form=form)
 
 
-@app.route('/planning')
-def planning():
-    return render_template("planning.html")
+@app.route('/planning/<planning_name>')
+def planning(planning_name):
+    return render_template("planning.html", planning_name=planning_name)
 
 
 @app.route('/remove_planning')

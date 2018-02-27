@@ -1,12 +1,13 @@
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired, ValidationError
 from wtforms import DateField, StringField
-import datetime
-from datetime import timedelta
+
+
 from models import Planning
 
 
 class AddPlanning(FlaskForm):
+    """Add planning to database"""
     planning_name = StringField('Planning name',
                                 validators=[DataRequired()])
     start_date = DateField('begin date DD/MM/YY',
