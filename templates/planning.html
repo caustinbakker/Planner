@@ -6,10 +6,14 @@
         <link rel="stylesheet" type="text/css" href="/static/styles.css">
     </head>
     <body>
-        <div id='planning_name'>
-            {{ planning_name }}
-        </div>
-        created_at : {{ created_at }}
-        Status : {{ status }}
+        <header>
+            <div id='planning_name'><h1>{{ planning_name }}</h1></div>
+            <div class="grid-container">
+                <div>hello</div>
+                <div id="created_at">{{ created_at }}</div>
+                <div>{{ days_left }} Left</div>
+            </div>
+            <div id='Status'>{{ status }}</div>
+        </header>
     </body>
 </html>

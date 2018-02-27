@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 from flask import Flask, g, render_template, redirect, url_for, flash
 from peewee import *
-from datetime import timedelta
+from datetime import timedelta, date
+import datetime
 
 import forms
 import models
@@ -56,8 +57,10 @@ def planning(planning_name):
         return redirect(url_for('create_planning'))
     return render_template("planning.html",
                            planning_name=planning.planning_name,
-                           created_at=planning.Created_at,
-                           status=planning.status
+                           created_at=planning.Created_at.date(),
+                           status=planning.status,
+                           days_left=((planning.end_date.date() -
+                                       date.today()).days)
                            )
 
 

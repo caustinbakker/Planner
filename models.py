@@ -1,5 +1,5 @@
 from peewee import *
-import datetime
+from datetime import date
 
 db = SqliteDatabase('planning.db')
 
@@ -8,7 +8,7 @@ class Planning(Model):
     planning_name = CharField(unique=True)
     start_date = DateTimeField()
     end_date = DateTimeField()
-    Created_at = DateTimeField(default=datetime.datetime.now)
+    Created_at = DateTimeField(default=date.today)
     status = IntegerField(default=0)
 
     class Meta(object):
