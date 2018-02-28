@@ -82,10 +82,13 @@ def date_range(begin_date, end_date):
     try:
         new_month = None
         while begin_date != end_date:
-            dates.update({begin_date.date(): {'day': begin_date.__format__('%d'), 'year': begin_date.__format__('%Y')}})
+            dates.update({begin_date.date():
+                         {'day': begin_date.__format__('%d'),
+                          'year': begin_date.__format__('%Y')}})
             if new_month != begin_date.month:
                 new_month = begin_date.month
-                dates[begin_date.date()].update({'month': begin_date.__format__('%B')})
+                dates[begin_date.date()].update({'month':
+                                                begin_date.__format__('%B')})
             begin_date += timedelta(days=1)
     except OverflowError:
         flash('Dates are not correct', 'failed')
