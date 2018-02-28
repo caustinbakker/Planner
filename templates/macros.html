@@ -12,10 +12,11 @@
 
 {% macro render_dates(dates) %}
     <ul>
-        {% for date in dates %}
-            <li>
-                <div class="">{{ date }}</div>
-            </li>
+        {% for datevalue, date_data in dates.items() %}
+            {% if date_data["month"] %}
+                <li id='month'  >{{ date_data["month"] }} </li>
+            {% endif %}
+            <li id = 'circle'>{{ date_data["day"] }}</li>
         {% endfor %}
     </ul>
 {% endmacro %}

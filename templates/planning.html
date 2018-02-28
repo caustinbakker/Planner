@@ -4,6 +4,7 @@
     <head>
         <meta charset="utf-8">
         <title>{{ planning_name }}</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="/static/styles.css">
     </head>
     <body>
@@ -14,9 +15,8 @@
                 <div id="created_at">{{ created_at }}</div>
                 <div>{{ days_left }} day(s) Left</div>
             </div>
-            <div id='time_bar_container'>{{ render_load_bar(procent) }}</div>
+            <div id='time_bar_container'>{{render_load_bar(procent)}}</div>
         </header>
-        {{ render_dates(dates) }}
-
+        {{ render_dates(dates)  }}
     </body>
 </html>

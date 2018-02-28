@@ -4,9 +4,8 @@ html, body{
     margin:0;
 }
 header{
-    border-bottom: 3px solid #101010;
     text-align: center;
-    background: #202020;
+    background: #3F51B5;
     color: white;
     padding-top: 5px;
     padding-bottom: 10px;
@@ -31,16 +30,37 @@ text-align: center;
 ul{
     padding: 0;
     margin: 0;
-    margin-top: 20px;
 }
 #time_bar_container{
     margin: 20px 0px 10px 0px;
-    background: white;
-    height: 50px;
+    background: #303F9F;
+    height: 10px;
+    text-align: center;
 }
 #time_bar{
     height: inherit;
-    background: blue;
+    background: #009688;
     width: 1%;
     float: left;
+    z-index: -1;
+}
+#circle{
+    border: 0.5px solid black;
+    border-radius:100%;
+    width: 30px;
+    height: 30px;
+    margin: 15px auto 15px auto;
+    transition-duration: 1s;
+    transform: scale(1);
+    z-index: 1;
+    background-color: white;
+    padding: 10px;
+    line-height: 200%;
+}
+#month{
+    background: #212121;
+    color: white;
+    padding: 20px 0px 20px 0px;
+    font-size: 40px;
+    font-family: 'Roboto Condensed', sans-serif;
 }
