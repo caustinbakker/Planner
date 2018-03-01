@@ -52,12 +52,20 @@ ul{
     width: 30px;
     height: 30px;
     margin: 15px auto 15px auto;
-    transition-duration: 3s;
+    transition-duration: 1s;
     transform: scale(1);
     z-index: 1;
     background-color: white;
     padding: 10px;
     line-height: 200%;
+    user-select: none;
+}
+#circle:hover{
+    transition-duration: 3s;
+    transform: scale(1.5);
+}
+#circle:active{
+    background: red;
 }
 #month{
     background: #212121;
@@ -75,8 +83,8 @@ ul{
     z-index: 0;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 0;
+    margin-top: 20px;
     left: 0;
     right: 0;
-    height: 70px;
+    height: 80px;
 }

@@ -16,8 +16,14 @@
             {% if date_data["month"] %}
                 <li id='month'>{{ date_data["month"] }} </li>
             {% endif %}
-            <div> <div id = 'time_line'></div>
-                <li id = 'circle'>{{ date_data["day"] }}</li>
+            <div class="grid-container">
+                <div> first-collumn </div>
+                <div>
+                    <div id = 'time_line'></div>
+                    <li id = 'circle'>{{ date_data["day"] }}</li>
+
+                </div>
+                <div> third-collumn </div>
             </div>
         {% endfor %}
     </ul>

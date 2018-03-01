@@ -20,6 +20,8 @@ class AddPlanning(FlaskForm):
 
 class AddTask(FlaskForm):
     """Add Task to your planning"""
+    task_name = StringField('task_name',
+                            validators=[DataRequired()])
 
 
 def planning_exists(form, field):

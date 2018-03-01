@@ -33,6 +33,7 @@ def after_request(response):
 @app.route('/create_planning', methods=('GET', 'POST'))
 def create_planning():
     form = forms.AddPlanning()
+    addtask = form.AddTask()
     if form.validate_on_submit():
         try:
             models.Planning.create_planning(
@@ -44,6 +45,8 @@ def create_planning():
             flash('planning exists', 'error')
         return redirect(url_for('planning',
                                 planning_name=form.planning_name.data))
+    if addtask.validate_on_submit():
+        print('testing')
     return render_template('create_planning.html', form=form)
 
 
