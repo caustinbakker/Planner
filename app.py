@@ -33,7 +33,6 @@ def after_request(response):
 @app.route('/create_planning', methods=('GET', 'POST'))
 def create_planning():
     form = forms.AddPlanning()
-    addtask = form.AddTask()
     if form.validate_on_submit():
         try:
             models.Planning.create_planning(
@@ -52,12 +51,14 @@ def create_planning():
 
 @app.route('/planning/<planning_name>')
 def planning(planning_name):
+
     try:
         planning = models.Planning.get(models.Planning.planning_name ==
                                        planning_name)
     except DoesNotExist:
         flash('Planning does not exist', 'error')
         return redirect(url_for('create_planning'))
+    form = forms.AddPlanning()    
     return render_template("planning.html",
                            planning_name=planning.planning_name,
                            created_at=planning.Created_at.date(),
@@ -70,7 +71,8 @@ def planning(planning_name):
                                          len(date_range(planning.start_date,
                                              planning.end_date))) *
                                          (date.today() -
-                                         planning.start_date.date()).days)
+                                         planning.start_date.date()).days),
+                           form=form
                            )
 
 
