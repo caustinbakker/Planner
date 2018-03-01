@@ -14,9 +14,11 @@
     <ul>
         {% for datevalue, date_data in dates.items() %}
             {% if date_data["month"] %}
-                <li id='month'  >{{ date_data["month"] }} </li>
+                <li id='month'>{{ date_data["month"] }} </li>
             {% endif %}
-            <li id = 'circle'>{{ date_data["day"] }}</li>
+            <div> <div id = 'time_line'></div>
+                <li id = 'circle'>{{ date_data["day"] }}</li>
+            </div>
         {% endfor %}
     </ul>
 {% endmacro %}
