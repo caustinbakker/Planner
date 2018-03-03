@@ -1,4 +1,7 @@
-{% macro render_field(field) %}
+{% macro render_field(form) %}
+<form class="form" action="" method="post">
+{% for field in form %}
+    {{ form.hidden_tag() }}
     <div class="field">
         {% if field.errors %}
             {% for error in field.errors %}
@@ -7,29 +10,11 @@
             {% endif %}
         {{ field(placeholder=field.label.text) }}
     </div>
+{% endfor %}
+<button type="submit" id='submit' name="button" >Continue</button>
+</form>
 {% endmacro %}
 
-
-{% macro render_dates(dates, form) %}
-    <ul>
-        {% for datevalue, date_data in dates.items() %}
-            {% if date_data["month"] %}
-                <li id='month'>{{ date_data["month"] }} </li>
-            {% endif %}
-            <div class="grid-container">
-                <div> first-collumn </div>
-                <div>
-                    <div id = 'time_line'></div>
-                    <li id = 'circle'>{{ date_data["day"] }}</li>
-                </div>
-                <div>
-                    {{ form }}
-                </div>
-                <div>
-            </div>
-        {% endfor %}
-    </ul>
-{% endmacro %}
 
 {% macro render_load_bar(procent) %}
     {% for x in range(procent) %}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% from 'macros.html' import render_dates, render_load_bar %}
+{% from 'macros.html' import render_dates, render_load_bar, render_field %}
 <html>
     <head>
         <meta charset="utf-8">
@@ -17,6 +17,20 @@
             </div>
             <div id='time_bar_container'>{{render_load_bar(procent)}}</div>
         </header>
-        {{ render_dates(dates, form)  }}
+            <ul>
+                {% for datevalue, date_data in dates.items() %}
+                {% if date_data['month'] %}
+                    <li id='month'>{{ date_data['month'] }}</li>
+                {% endif %}
+                <div class="grid-container">
+                    <div> 1 </div>
+                    <div>
+                        <div id = 'time_line'></div>
+                        <li id = 'circle'>{{ date_data["day"] }}</li>
+                    </div>
+                    <div> <button id="button" class="button">Add task</button> </div> 
+                </div>
+                {% endfor %}
+            </ul>
     </body>
 </html>
