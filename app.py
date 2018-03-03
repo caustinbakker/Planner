@@ -1,4 +1,4 @@
-#! python
+#! python\Venv\Scriptsactivate_this.py
 
 from flask import Flask, g, render_template, redirect, url_for, flash
 from peewee import *
