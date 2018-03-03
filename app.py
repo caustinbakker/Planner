@@ -1,4 +1,5 @@
-#!/usr/bin/env python3
+#! python
+
 from flask import Flask, g, render_template, redirect, url_for, flash
 from peewee import *
 from datetime import timedelta, date
