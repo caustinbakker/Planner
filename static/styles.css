@@ -36,7 +36,7 @@ ul{
 #time_bar_container{
     margin: 20px 0px 10px 0px;
     background: #303F9F;
-    height: 10px;
+    height: 20px;
     text-align: center;
 }
 #time_bar{
@@ -109,4 +109,11 @@ ul{
     background: white;
     color: black;
     transition-duration: 1s;
+}
+#procent{
+color: #BDBDBD;
+position: absolute;
+width: 100%;
+text-align: center;
+margin-top: 1px;
 }

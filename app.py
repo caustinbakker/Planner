@@ -1,4 +1,4 @@
-#! python\Venv\Scriptsactivate_this.py
+#! \Venv\Scriptsactivate_this.py
 
 from flask import Flask, g, render_template, redirect, url_for, flash
 from peewee import *
@@ -21,7 +21,10 @@ app.secret_key = '124312415634f35fdf89hg489hjf9092j23jjf9928fisd02d0k11j90j'
 def before_request():
     """Connect database connect"""
     g.db = models.db
-    g.db.connect()
+    try:
+        g.db.connect()
+    except OperationalError:
+        g.db.close()
 
 
 @app.after_request
@@ -29,6 +32,12 @@ def after_request(response):
     """Close database connection """
     g.db.close()
     return response
+
+
+@app.route('/planning/<planning_name>/<date>', methods=('GET', 'POST'))
+def addtask(planning_name, date):
+    form = forms.AddTask()
+    return render_template('addtask.html', form=form)
 
 
 @app.route('/create_planning', methods=('GET', 'POST'))
@@ -48,9 +57,9 @@ def create_planning():
     return render_template('create_planning.html', form=form)
 
 
-@app.route('/planning/<planning_name>')
-def planning(planning_name):
-    form = forms.AddTask()
+@app.route('/<user>/<planning_name>')
+def planning(planning_name, user='user'):
+    form = forms.AddPlanning()
     try:
         planning = models.Planning.get(models.Planning.planning_name ==
                                        planning_name)
