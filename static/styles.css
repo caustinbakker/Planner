@@ -116,4 +116,20 @@ position: absolute;
 width: 100%;
 text-align: center;
 margin-top: 1px;
+height: 10px;
+}
+#year{
+    width: 100%;
+    text-align: center;
+    margin: 15px auto 15px auto;
+    color: red;
+}
+#button-year-l, #button-year-r{
+    margin-right: 50px;
+    width: 50px;
+    height: 20px;
+}
+#button-year-r{
+    margin-right: 0px;
+    margin-left: 50px;
 }

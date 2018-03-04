@@ -1,36 +1,29 @@
-<!DOCTYPE html>
-{% from 'macros.html' import render_dates, render_load_bar, render_field %}
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>{{ planning_name }}</title>
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="/static/styles.css">
-    </head>
-    <body>
-        <header>
-            <div id='planning_name'><h1>{{ planning_name }}</h1></div>
-            <div class="grid-container">
-                <div>hello</div>
-                <div id="created_at">{{ created_at }}</div>
-                <div>{{ days_left }} day(s) Left</div>
-            </div>
-            <div id='time_bar_container'> <div id='procent'> {{procent}}% </div>  {{render_load_bar(procent)}}   </div>
-        </header>
+{% extends "layout.html" %}
+{% block title %} {{ planning_name }} {% endblock %}
+
+{% block content %}
+
+<header>
+    <div id='planning_name'><h1>{{ planning_name }}</h1></div>
+    <div class="grid-container">
+        <div>hello</div>
+        <div id="created_at">{{ created_at }}</div>
+        <div>{{ days_left }} day(s) Left</div>
+    </div>
+    <div id='time_bar_container'> <div id='procent'> {{procent}}% </div>  {{render_load_bar(procent)}}   </div>
+</header>
             <ul>
                 {% for datevalue, date_data in dates.items() %}
                 {% if date_data['month'] %}
-                    <li id='month'>{{ date_data['month'] }}</li>
+                    <header id='month'>{{ date_data['month'] }}</header>
                 {% endif %}
-                <div class="grid-container">
-                    <div> 1 </div>
+                <content class="grid-container">
+                    <div> render tasks </div>
                     <div>
                         <div id = 'time_line'></div>
                         <li id = 'circle'>{{ date_data["day"] }}</li>
                     </div>
-                    <div> <a href="{{ url_for('addtask', planning_name=planning_name, date=date_data) }}"  id="button" class="button" , planning_name>Add task</a> </div>
-                </div>
+                    <div> <a href="{{ url_for('addtask', planning_name=planning_name, date=datevalue) }}"  id="button" class="button" , planning_name>Add task</a> </div>
+                </content>
                 {% endfor %}
-            </ul>
-    </body>
-</html>
+{% endblock %}

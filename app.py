@@ -34,9 +34,19 @@ def after_request(response):
     return response
 
 
-@app.route('/planning/<planning_name>/<date>', methods=('GET', 'POST'))
+@app.route('/planning/<planning_name>/123', methods=('GET', 'POST'))
 def addtask(planning_name, date):
     form = forms.AddTask()
+    if form.validate_on_submit():
+        models.Task.create_task(
+            planning=models.Planning.get(models.Planning.planning_name ==
+                                         planning_name).id,
+            task=form.name.data,
+            start_date=form.start_date.data,
+            end_date=form.end_date.data,
+            desc=form.desc.data
+        )
+        return redirect(url_for('planning', planning_name=planning_name))
     return render_template('addtask.html', form=form)
 
 
@@ -57,14 +67,14 @@ def create_planning():
     return render_template('create_planning.html', form=form)
 
 
-@app.route('/<user>/<planning_name>')
-def planning(planning_name, user='user'):
+@app.route('/planning/<planning_name>')
+def planning(planning_name):
     form = forms.AddPlanning()
     try:
         planning = models.Planning.get(models.Planning.planning_name ==
                                        planning_name)
     except DoesNotExist:
-        flash('Planning does not exist', 'error')
+        flash('[error]Planning does not exist', 'error')
         return redirect(url_for('create_planning'))
     return render_template("planning.html",
                            planning_name=planning.planning_name,
@@ -74,12 +84,12 @@ def planning(planning_name, user='user'):
                                        date.today()).days),
                            dates=date_range(planning.start_date,
                                             planning.end_date),
-                           procent = int((100 /
-                                         len(date_range(planning.start_date,
-                                             planning.end_date))) *
-                                         (date.today() -
-                                         planning.start_date.date()).days),
-                           form=form
+                           procent = calculate_procent(planning.start_date,
+                                                       planning.end_date),
+                           form=form,
+                           planning=models.Planning.get((models.Planning.
+                                                         planning_name) ==
+                                                        planning_name)
                            )
 
 
@@ -94,19 +104,28 @@ def date_range(begin_date, end_date):
     try:
         new_month = None
         while begin_date != end_date:
-            dates.update({begin_date.date():
+            dates.update({begin_date.__format__('%d-%m-%Y'):
                          {'day': begin_date.__format__('%d'),
                           'year': begin_date.__format__('%Y')}})
             if new_month != begin_date.month:
                 new_month = begin_date.month
-                dates[begin_date.date()].update({'month':
-                                                begin_date.__format__('%B')})
+                dates[begin_date.__format__('%d-%m-%Y')].update(
+                    {'month': begin_date.__format__('%B')})
             begin_date += timedelta(days=1)
     except OverflowError:
         flash('Dates are not correct', 'failed')
         return redirect(url_for('create_planning'))
     return dates
 
+
+def calculate_procent(start_date, end_date):
+    procent = int((100 / len(date_range(start_date,
+                                        end_date))) *
+                  (date.today() - start_date.date()).days)
+    if 100 <= procent:
+        return 100
+    else:
+        return procent
 
 if __name__ == '__main__':
     models.initialize()

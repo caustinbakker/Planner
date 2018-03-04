@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-{% from 'macros.html' import render_field %}
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-    </head>
-    <body>
+{% extends "layout.html" %}
+    {% block content %}
         {{ render_field(form) }}
-        </form>
-    </body>
-</html>
+    {% endblock %}

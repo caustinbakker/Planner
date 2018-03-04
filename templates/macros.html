@@ -1,6 +1,24 @@
 {% macro render_field(form) %}
 <form class="form" action="" method="post">
 {% for field in form %}
+   {{ form.hidden_tag() }}
+   <div class="field">
+       {% if field.errors %}
+           {% for error in field.errors %}
+               <div class="notification error">{{ error }}</div>
+           {% endfor %}
+           {% endif %}
+       {{ field(placeholder=field.label.text) }}
+   </div>
+{% endfor %}
+<button type="submit" id='submit' name="button" >Continue</button>
+</form>
+{% endmacro %}
+
+
+{% macro render_field_task(form, begin_date='') %}
+<form class="form" action="" method="post">
+{% for field in form %}
     {{ form.hidden_tag() }}
     <div class="field">
         {% if field.errors %}
@@ -8,7 +26,11 @@
                 <div class="notification error">{{ error }}</div>
             {% endfor %}
             {% endif %}
-        {{ field(placeholder=field.label.text) }}
+            {% if field.name == 'task_start_date'  %}
+                {{ field(placeholder=field.label.text, value=begin_date) }}
+            {% else %}
+                {{ field(placeholder=field.label.text) }}
+            {% endif %}
     </div>
 {% endfor %}
 <button type="submit" id='submit' name="button" >Continue</button>
@@ -19,5 +41,12 @@
 {% macro render_load_bar(procent) %}
     {% for x in range(procent) %}
         <div id='time_bar'></div>
+    {% endfor %}
+{% endmacro %}
+
+{% macro render_tasks(tasks, dates) %}
+    {% for task in tasks %}
+        {{ task.task }}
+        {{ task.start_date.date() }}
     {% endfor %}
 {% endmacro %}

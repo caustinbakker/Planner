@@ -14,9 +14,6 @@ class Planning(Model):
     class Meta(object):
         database = db
 
-    def get_dates(self):
-        return Date.select().where(Date.planning == self)
-
     @classmethod
     def create_planning(cls, planning_name, start_date, end_date):
         try:
@@ -29,17 +26,44 @@ class Planning(Model):
             raise ValueError("Planning already exists")
 
 
-class Date(Model):
-    planning = ForeignKeyField(Planning, backref='Date')
-    date = DateTimeField()
+class Task(Model):
+    planning = ForeignKeyField(Planning, backref='Task')
     task = CharField()
-    status = IntegerField(default=0)
+    start_date = DateTimeField()
+    end_date = DateTimeField()
+    desc = CharField()
 
     class Meta(object):
         database = db
 
+    @classmethod
+    def create_task(cls, planning, task, start_date, end_date, desc):
+        cls.create(
+            planning=planning,
+            task=task,
+            start_date=start_date,
+            end_date=end_date,
+            desc=desc
+        )
+
+
+class TaskDay(Model):
+    planning = ForeignKeyField(Task, backref='TaskDay')
+    date = DateField()
+    status = IntegerField(default=1)
+
+    class Meta(object):
+        database = db
+
+    @classmethod
+    def create_taskday(cls, date, status):
+        cls.create(
+            date=date,
+            status=status,
+        )
+
 
 def initialize():
     db.connect()
-    db.create_tables([Planning, Date], safe=True)
+    db.create_tables([Planning, Task, TaskDay], safe=True)
     db.close()

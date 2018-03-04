@@ -20,16 +20,15 @@ class AddPlanning(FlaskForm):
 
 class AddTask(FlaskForm):
     """Add Task to your planning"""
-    task_name = StringField('Task name',
-                            validators=[DataRequired()])
-    task_start_date = DateField('begin date DD/MM/YY',
-                                format="%d/%m/%Y",
-                                validators=[DataRequired()])
-    task_end_date = DateField('end date DD/MM/YY',
-                              format="%d/%m/%Y",
-                              validators=[DataRequired()])
-    task_desc = StringField('Task description',
-                            validators=[DataRequired()])
+    name = StringField('Task name',
+                       validators=[DataRequired()])
+    start_date = DateField('begin date DD/MM/YY',
+                           format="%d/%m/%Y",
+                           validators=[DataRequired()])
+    end_date = DateField('end date DD/MM/YY',
+                         format="%d/%m/%Y")
+    desc = StringField('Task description',
+                       validators=[DataRequired()])
 
 
 def planning_exists(form, field):
