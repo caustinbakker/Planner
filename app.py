@@ -34,8 +34,8 @@ def after_request(response):
     return response
 
 
-@app.route('/planning/<planning_name>/123', methods=('GET', 'POST'))
-def addtask(planning_name, date):
+@app.route('/planning/<planning_name>/addtask', methods=('GET', 'POST'))
+def addtask(planning_name):
     form = forms.AddTask()
     if form.validate_on_submit():
         models.Task.create_task(

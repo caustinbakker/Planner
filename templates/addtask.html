@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-{% from 'macros.html' import render_field_task, render_date_selection %}
-<html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="/static/styles.css">
-        <meta charset="utf-8">
-        <title></title>
-    </head>
-    <body>
-        <header>
-            <button id="button-year-l" name="button"></button>
-                date
-            <button id="button-year-r" name="button"></button>
-        </header>
-        {{ render_date_selection(date) }}
-        <!--{{ render_field_task(form, date) }}-->
-    </body>
-</html>
+{% extends "layout.html" %}
+    {% block content %}
+        {{ render_field(form) }}
+    {% endblock %}

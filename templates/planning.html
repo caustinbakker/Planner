@@ -23,7 +23,7 @@
                         <div id = 'time_line'></div>
                         <li id = 'circle'>{{ date_data["day"] }}</li>
                     </div>
-                    <div> <a href="{{ url_for('addtask', planning_name=planning_name, date=datevalue) }}"  id="button" class="button" , planning_name>Add task</a> </div>
+                    <div> <a href="{{ url_for('addtask', planning_name=planning_name) }}"  id="button" class="button" , planning_name>Add task</a> </div>
                 </content>
                 {% endfor %}
 {% endblock %}
