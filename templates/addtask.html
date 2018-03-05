@@ -1,9 +1,14 @@
 {% extends "layout.html" %}
     {% block content %}
         {{ render_field(form) }}
-        <section id='months_list'>
+        <section id='months_list' value='test'>
         {% for month in months %}
-            <div id='months'> {{ month }} </div>
+            <button id='months' value="{{ month }}" onclick=""> {{ month }} </button>
+        {% endfor %}
+
+        <section id='months_list' value='test'>
+        {% for day in days %}
+            <button id='months' value="{{ day }}" onclick=""> {{ day }} </button>
         {% endfor %}
         </section>
     {% endblock %}
