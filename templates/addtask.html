@@ -1,4 +1,9 @@
 {% extends "layout.html" %}
     {% block content %}
         {{ render_field(form) }}
+        <section id='months_list'>
+        {% for month in months %}
+            <div id='months'> {{ month }} </div>
+        {% endfor %}
+        </section>
     {% endblock %}

@@ -47,7 +47,7 @@ def addtask(planning_name):
             desc=form.desc.data
         )
         return redirect(url_for('planning', planning_name=planning_name))
-    return render_template('addtask.html', form=form)
+    return render_template('addtask.html', form=form, months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'])
 
 
 @app.route('/create_planning', methods=('GET', 'POST'))

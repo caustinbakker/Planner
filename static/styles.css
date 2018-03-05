@@ -133,3 +133,23 @@ height: 10px;
     margin-right: 0px;
     margin-left: 50px;
 }
+#months_list{
+    width: 100%;
+    display: flex;
+    position: relative;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+#months{
+    border: 2px solid black;
+    width: 100px;
+    text-align: center;
+    margin: 10px 1% 0 1%;
+
+}
