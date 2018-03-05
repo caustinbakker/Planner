@@ -3,7 +3,10 @@
         {{ render_field(form) }}
         <section id='months_list' value='test'>
         {% for month in months %}
-            <button id='months' value="{{ month }}" onclick=""> {{ month }} </button>
+        <label class='container'>
+            <input type='radio' id='months' name="radio" value="{{ month }}"> {{ month }} </input>
+            <span class="checkmark"></span>
+        </label>
         {% endfor %}
 
         <section id='months_list' value='test'>
