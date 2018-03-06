@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired, ValidationError
-from wtforms import DateField, StringField
+from wtforms import DateField, StringField, RadioField
 
 
 from models import Planning
@@ -20,6 +20,7 @@ class AddPlanning(FlaskForm):
 
 class AddTask(FlaskForm):
     """Add Task to your planning"""
+    test = RadioField('Label', choices=[('value','description'),('value_two','whatever')])
     name = StringField('Task name',
                        validators=[DataRequired()])
     start_date = DateField('begin date DD/MM/YY',
