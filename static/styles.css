@@ -3,14 +3,17 @@
 
 html, body {
     height: 1000px;
-    margin:0;
-    color: var(--primary-text-color);
+    margin: 0;
+    font-family: 'Roboto Condensed', sans-serif;
+    background: white;
 }
 header{
     text-align: center;
-    background: #3F51B5;
+    background: var(--dark-main-color);
     padding-top: 5px;
     padding-bottom: 10px;
+    box-shadow: 5px 0 2px;
+    color: white  ;
 }
 h1{
     padding: 0;
@@ -84,7 +87,6 @@ ul{
 }
 .button {
     background-color: #4CAF50;
-    border: none;
     color: white;
     padding: 15px 32px;
     text-align: center;
@@ -101,61 +103,30 @@ ul{
     color: black;
     transition-duration: 1s;
 }
-#procent{
-    color: #BDBDBD;
-    position: absolute;
+progress{
+    color: red;
     width: 100%;
-    text-align: center;
-    margin-top: 1px;
     height: 10px;
-}
-#months_list{
-    width: 100%;
-    display: flex;
-    position: relative;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    flex-wrap: wrap;
-    justify-content: center;
-
-}
-#month{
-    background: #212121;
-    color: white;
-    padding: 20px 0px 20px 0px;
-    font-size: 40px;
-    font-family: 'Roboto Condensed', sans-serif;
-    z-index: 1;
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-}
-#date_select{
-    padding: 20px 0px 20px 0px;
-    font-family: 'Roboto Condensed', sans-serif;
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-#date_select input{
-  position: absolute;
-  opacity: 1;
-}
-ul#date_select li label{
-    margin: 10px 10px 10px 10px;
     background: red;
 }
-ul#date_select li label:hover{
-    margin: 10px 10px 10px 10px;
-    background: green;
+.notification_error{
+    position: relative;
+    background: #991713;
+    color: var(--main-text);
+    text-align: center;
+    box-shadow: 0px 5px 70px red;
+    z-index: 1;
 }
-#date_select input:checked ~ ul#date_select li{
-  background: blue;
-}
-#date_select input:checked{
-    opacity: 0;
+#button{
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    vertical-align: middle;
+    border: 2px solid #4CAF50; /* Green */
+    margin: 15px auto 15px auto;
 }

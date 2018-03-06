@@ -10,7 +10,7 @@
         <div id="created_at">{{ created_at }}</div>
         <div>{{ days_left }} day(s) Left</div>
     </div>
-    <div id='time_bar_container'> <div id='procent'> {{procent}}% </div>  {{render_load_bar(procent)}}   </div>
+    <progress id='procent' value="50" max="100">{{procent}}%</progress>
 </header>
             <ul>
                 {% for datevalue, date_data in dates.items() %}

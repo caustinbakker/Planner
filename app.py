@@ -38,15 +38,8 @@ def after_request(response):
 def addtask(planning_name):
     form = forms.AddTask()
     if form.validate_on_submit():
-        models.Task.create_task(
-            planning=models.Planning.get(models.Planning.planning_name ==
-                                         planning_name).id,
-            task=form.name.data,
-            start_date=form.start_date.data,
-            end_date=form.end_date.data,
-            desc=form.desc.data
-        )
-        return redirect(url_for('planning', planning_name=planning_name))
+        return form.year.data + '\n' + form.month.data + '\n' + form.day.data
+        # return redirect(url_for('planning', planning_name=planning_name))
     return render_template('addtask.html', form=form)
 
 

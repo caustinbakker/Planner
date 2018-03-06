@@ -1,7 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired, ValidationError
 from wtforms import DateField, StringField, RadioField
-import datetime
 
 from models import Planning
 
@@ -20,10 +19,19 @@ class AddPlanning(FlaskForm):
 
 class AddTask(FlaskForm):
     """Add Task to your planning"""
-    months = []
-    for month in range(1, 13):
-        months.append((month, datetime.date(2008, month, 1).strftime('%B')))
-    test1 = RadioField(choices=(months), id='date_select')
+    years = [('2017', '2017'), ('2018', '2018'), ('2019', '2019'),
+             ('2020', '2020'), ('2021', '2021'), ('2022', '2022')]
+    months = [('January', 'January'), ('February', 'February'),
+              ('March', 'March'), ('April', 'April'), ('May', 'May'),
+              ('June', 'June'), ('July', 'July'), ('August', 'August'),
+              ('September', 'September'), ('October', 'October'),
+              ('November', 'November'), ('December', 'December')]
+    days = []
+    for day in range(1, 32):
+        days.append((str(day), str(day)))
+    year = RadioField('year', choices=(years), id='date_year')
+    month = RadioField('month', choices=(months), id='date_month')
+    day = RadioField('day', choices=(days), id='date_day')
 
 
 def planning_exists(form, field):
