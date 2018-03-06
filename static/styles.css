@@ -67,15 +67,6 @@ ul{
 #circle:active{
     background: red;
 }
-#month{
-    background: #212121;
-    color: white;
-    padding: 20px 0px 20px 0px;
-    font-size: 40px;
-    font-family: 'Roboto Condensed', sans-serif;
-    z-index: 1;
-    position: relative;
-}
 #time_line{
     width: 0.8px;
     background:black;
@@ -111,27 +102,12 @@ ul{
     transition-duration: 1s;
 }
 #procent{
-color: #BDBDBD;
-position: absolute;
-width: 100%;
-text-align: center;
-margin-top: 1px;
-height: 10px;
-}
-#year{
+    color: #BDBDBD;
+    position: absolute;
     width: 100%;
     text-align: center;
-    margin: 15px auto 15px auto;
-    color: red;
-}
-#button-year-l, #button-year-r{
-    margin-right: 50px;
-    width: 50px;
-    height: 20px;
-}
-#button-year-r{
-    margin-right: 0px;
-    margin-left: 50px;
+    margin-top: 1px;
+    height: 10px;
 }
 #months_list{
     width: 100%;
@@ -146,69 +122,40 @@ height: 10px;
     justify-content: center;
 
 }
-#months{
-    border: 2px solid black;
-    width: 100px;
-    text-align: center;
-    margin: 10px 1% 0 1%;
+#month{
+    background: #212121;
+    color: white;
+    padding: 20px 0px 20px 0px;
+    font-size: 40px;
+    font-family: 'Roboto Condensed', sans-serif;
+    z-index: 1;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
 }
-.container {
-  display: block;
-  position: relative;
-  margin-left: 20px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  user-select: none;
+#date_select{
+    padding: 20px 0px 20px 0px;
+    font-family: 'Roboto Condensed', sans-serif;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
-
-/* Hide the browser's default radio button */
-.container input {
+#date_select input{
   position: absolute;
-  opacity: 0;
+  opacity: 1;
 }
-
-/* Create a custom radio button */
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100px;
-  width: 100px;
-  background-color: #eee;
-  z-index: -1;
+ul#date_select li label{
+    margin: 10px 10px 10px 10px;
+    background: red;
 }
-
-/* On mouse-over, add a grey background color */
-.container:hover input ~ .checkmark {
-  background-color: #ccc;
+ul#date_select li label:hover{
+    margin: 10px 10px 10px 10px;
+    background: green;
 }
-
-/* When the radio button is checked, add a blue background */
-
-
-/* Create the indicator (the dot/circle - hidden when not checked) */
-
-/* Show the indicator (dot/circle) when checked */
-.container input:checked ~ .checkmark:after {
-  display: block;
+#date_select input:checked ~ ul#date_select li{
+  background: blue;
 }
-
-/* Style the indicator (dot/circle) */
-.container .checkmark:after {
-  top: 9px;
-  left: 9px;
-  width: 8px;
-  height: 8px;
-}
-
-.container input:checked{
-  background-color: blue;
-}
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-.container input:checked ~ .checkmark {
-    background-color: #2196F3;
+#date_select input:checked{
+    opacity: 0;
 }

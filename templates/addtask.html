@@ -1,17 +1,4 @@
 {% extends "layout.html" %}
     {% block content %}
         {{ render_field(form) }}
-        <section id='months_list' value='test'>
-        {% for month in months %}
-        <label class='container'>
-            <input type='radio' id='months' name="radio" value="{{ month }}"> {{ month }} </input>
-            <span class="checkmark"></span>
-        </label>
-        {% endfor %}
-
-        <section id='months_list' value='test'>
-        {% for day in days %}
-            <button id='months' value="{{ day }}" onclick=""> {{ day }} </button>
-        {% endfor %}
-        </section>
     {% endblock %}

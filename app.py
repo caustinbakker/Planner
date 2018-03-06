@@ -37,9 +37,6 @@ def after_request(response):
 @app.route('/planning/<planning_name>/addtask', methods=('GET', 'POST'))
 def addtask(planning_name):
     form = forms.AddTask()
-    days = []
-    for day in range(1,32):
-        days.append(day)
     if form.validate_on_submit():
         models.Task.create_task(
             planning=models.Planning.get(models.Planning.planning_name ==
@@ -50,7 +47,7 @@ def addtask(planning_name):
             desc=form.desc.data
         )
         return redirect(url_for('planning', planning_name=planning_name))
-    return render_template('addtask.html', form=form, months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'], days=days)
+    return render_template('addtask.html', form=form)
 
 
 @app.route('/create_planning', methods=('GET', 'POST'))
