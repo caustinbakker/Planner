@@ -1,0 +1,38 @@
+#date_year, #date_month, #date_day{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-grow: 1;
+    user-select: none;
+    background: var(--accent-color);
+    padding: 30px;
+}
+#date_year li, #date_month li, #date_day li{
+    margin: 10px 5px 0 5px;
+}
+#date_year li label, #date_month li label, #date_day li label{
+    display: block;
+    background: var(--dark-main-color);
+    color: var(--accent-color)  ;
+    padding: 35px 20px;
+    width: 70px;
+    border-radius: 2px;
+}
+#date_year input:checked ~ label, #date_year input, #date_month input:checked ~ label, #date_day input:checked ~ label{
+    color: var(--dark-main-color);
+    background: var(--accent-color);
+    box-shadow: 0px 0px 30px white;
+}
+
+#date_year input, #date_month input, #date_day input{
+  position: absolute;
+  opacity: 0;
+}
+#date_day li label{
+    padding: 15px;
+    width: 15px;
+}
+#date_day{
+    padding: 30px 100px;
+}
