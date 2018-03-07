@@ -2,7 +2,7 @@
 
 from flask import Flask, g, render_template, redirect, url_for, flash
 from peewee import *
-from datetime import timedelta, date
+from datetime import timedelta, date, datetime
 
 
 import forms
@@ -25,6 +25,7 @@ def before_request():
         g.db.connect()
     except OperationalError:
         g.db.close()
+        g.db.connect()
 
 
 @app.after_request
@@ -38,8 +39,22 @@ def after_request(response):
 def addtask(planning_name):
     form = forms.AddTask()
     if form.validate_on_submit():
-        return form.year.data + '\n' + form.month.data + '\n' + form.day.data
-        # return redirect(url_for('planning', planning_name=planning_name))
+        models.Task.create_task(
+            planning=models.Planning.get(models.Planning.planning_name == planning_name).id,
+            task=form.task.data,
+            start_date=datetime.strptime('{}-{}-{}'.format(form.day.data,
+                                                           form.month.data,
+                                                           form.year.data),
+                                         '%d-%B-%Y'),
+            end_date=datetime.strptime('{}-{}-{}'.format(form.day.data,
+                                                           form.month.data,
+                                                           form.year.data),
+                                         '%d-%B-%Y'),
+            desc = form.desc.data
+        )
+        models.Date.create_date(
+            task=models.Planning.get(models.Planning.planning_name == planning_name).id
+        )
     return render_template('addtask.html', form=form)
 
 
@@ -82,7 +97,8 @@ def planning(planning_name):
                            form=form,
                            planning=models.Planning.get((models.Planning.
                                                          planning_name) ==
-                                                        planning_name)
+                                                        planning_name),
+                           tasks=['01-03-2017', '02-03-2017']
                            )
 
 

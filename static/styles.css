@@ -22,6 +22,7 @@ h1{
 .grid-container {
     display: grid;
     grid-template-columns: 33% auto 33%;
+    height: 200px;
 }
 .grid-item {
     padding: 20px;
@@ -36,19 +37,6 @@ ul{
     padding: 0;
     margin: 0;
 }
-#time_bar_container{
-    margin: 20px 0px 10px 0px;
-    background: #303F9F;
-    height: 20px;
-    text-align: center;
-}
-#time_bar{
-    height: inherit;
-    background: #009688;
-    width: 1%;
-    float: left;
-    z-index: -1;
-}
 #circle{
     border: 0.5px solid black;
     border-radius:100%;
@@ -57,18 +45,16 @@ ul{
     margin: 15px auto 15px auto;
     transition-duration: 1s;
     transform: scale(1);
-    z-index: 1;
+    z-index: 2;
     background-color: white;
     padding: 10px;
     line-height: 200%;
     user-select: none;
+    position: relative;
 }
 #circle:hover{
     transition-duration: 3s;
     transform: scale(1.5);
-}
-#circle:active{
-    background: red;
 }
 #time_line{
     width: 0.8px;
@@ -80,10 +66,7 @@ ul{
     margin-top: 20px;
     left: 0;
     right: 0;
-    height: 80px;
-}
-#addtaskb{
-    font-size: 10px;
+    height: inherit;
 }
 .button {
     background-color: #4CAF50;
@@ -129,4 +112,31 @@ progress{
     vertical-align: middle;
     border: 2px solid #4CAF50; /* Green */
     margin: 15px auto 15px auto;
+}
+.display_task_list{
+    position: relative;
+    display: inline-flex;
+    flex-wrap: wrap;
+    top: 33%;
+    justify-content: center;
+}
+#display_task, #display_task-1{
+    z-index: 0;
+    display: inline-block;
+    background: red;
+    width: 5px;
+    color: red;
+    box-shadow: 0 0 0 green;
+    transition: z-index 5s, box-shadow 1s 0.5s ease;
+    margin: 0 1px;
+}
+#display_task-1{
+    background: blue;
+    color: blue;
+    left: -2px;
+}
+#display_task:hover, #display_task-1:hover {
+    box-shadow: 15px 0 0;
+    z-index: 100;
+
 }

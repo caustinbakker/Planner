@@ -47,23 +47,22 @@ class Task(Model):
         )
 
 
-class TaskDay(Model):
-    planning = ForeignKeyField(Task, backref='TaskDay')
-    date = DateField()
+class Date(Model):
+    task = ForeignKeyField(Task, backref='Date')
+    date = DateTimeField(default=date.today)
     status = IntegerField(default=1)
 
     class Meta(object):
         database = db
 
     @classmethod
-    def create_taskday(cls, date, status):
+    def create_date(cls, task):
         cls.create(
-            date=date,
-            status=status,
+            task=task
         )
 
 
 def initialize():
     db.connect()
-    db.create_tables([Planning, Task, TaskDay], safe=True)
+    db.create_tables([Planning, Task, Date], safe=True)
     db.close()

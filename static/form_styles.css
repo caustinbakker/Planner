@@ -1,11 +1,10 @@
-#date_year, #date_month, #date_day{
+#date_year, #date_month, #date_day, #year, #month, #day{
     position: relative;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     flex-grow: 1;
     user-select: none;
-    background: var(--accent-color);
     padding: 30px;
 }
 #date_year li, #date_month li, #date_day li{
@@ -33,6 +32,22 @@
     padding: 15px;
     width: 15px;
 }
+#date_year{
+    background: #FF5722;
+}
+#date_month{
+    background: #4CAF50 ;
+}
 #date_day{
     padding: 30px 100px;
+    background: #3F51B5;
+}
+#date_name{
+    position: absolute;
+    display: block;
+    background: white;
+    color: black;
+    z-index: 1;
+    width: 100%;
+    color: inherit;
 }

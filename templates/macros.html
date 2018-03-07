@@ -51,19 +51,13 @@
     {% endfor %}
 {% endmacro %}
 
-{% macro render_field_date_selector(form) %}
-<form class="form" action="" method="post">
-{% for field in form %}
-   {{ form.hidden_tag() }}
+{% macro render_field_single(field) %}
    <div class="field">
        {% if field.errors %}
            {% for error in field.errors %}
-               <div class="notification error">{{ error }}</div>
+               <div class="notification_error">{{ error }}</div>
            {% endfor %}
            {% endif %}
        {{ field(placeholder=field.label.text) }}
    </div>
-{% endfor %}
-<button type="submit" id='submit' name="button" >Continue</button>
-</form>
 {% endmacro %}

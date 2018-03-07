@@ -32,6 +32,8 @@ class AddTask(FlaskForm):
     year = RadioField('year', choices=(years), id='date_year')
     month = RadioField('month', choices=(months), id='date_month')
     day = RadioField('day', choices=(days), id='date_day')
+    task = StringField('tast')
+    desc = StringField('desc')
 
 
 def planning_exists(form, field):
