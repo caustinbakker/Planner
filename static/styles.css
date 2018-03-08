@@ -19,12 +19,11 @@ h1{
     padding: 0;
     margin: 0;
 }
-.grid-container {
+.grid-container{
     display: grid;
     grid-template-columns: 33% auto 33%;
-    height: 200px;
 }
-.grid-item {
+.grid-item{
     padding: 20px;
     font-size: 30px;
     text-align: center;
@@ -139,4 +138,7 @@ progress{
     box-shadow: 15px 0 0;
     z-index: 100;
 
+}
+.task_name{
+    writing-mode: vertical-rl;
 }

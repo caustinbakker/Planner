@@ -13,24 +13,21 @@
     <progress id='procent' value="50" max="100">{{procent}}%</progress>
 </header>
 
-
-
 <ul>
                 {% for datevalue, date_data in dates.items() %}
-                {% if date_data['month'] %}
-                    <header id='month'>{{ date_data['month'] }}</header>
-                {% endif %}
+                    {% if date_data['month'] %}
+                        <header id='month'>{{ date_data['month'] }}</header>
+                    {% endif %}
                 <content class="grid-container">
                     <div class='display_task_list'>
                         {% for task in tasks %}
-                            {% if datevalue == task %}
-                                    {% for test in planning.Task.select() %}
-                                        {{ test.start_date }}
-                                    {% endfor %}
-                            {% endif %}
+                            <div class='task_name'> {{ task.task }} 1234 </div>
+                            {% for task_date in task.Date.select() %}
+                                    {% if datevalue == task_date.date.__format__('%d-%m-%Y') %}
+                                        <li id='display_task'></li>
+                                    {% endif %}
+                            {% endfor %}
                         {% endfor %}
-                        <li id='display_task'></li>
-                        <li id='display_task-1'></li>
                     </div>
 
                     <div>

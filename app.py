@@ -40,20 +40,22 @@ def addtask(planning_name):
     form = forms.AddTask()
     if form.validate_on_submit():
         models.Task.create_task(
-            planning=models.Planning.get(models.Planning.planning_name == planning_name).id,
+            planning=models.Planning.get(models.Planning.planning_name ==
+                                         planning_name).id,
             task=form.task.data,
             start_date=datetime.strptime('{}-{}-{}'.format(form.day.data,
                                                            form.month.data,
                                                            form.year.data),
                                          '%d-%B-%Y'),
             end_date=datetime.strptime('{}-{}-{}'.format(form.day.data,
-                                                           form.month.data,
-                                                           form.year.data),
-                                         '%d-%B-%Y'),
-            desc = form.desc.data
+                                                         form.month.data,
+                                                         form.year.data),
+                                       '%d-%B-%Y'),
+            desc=form.desc.data
         )
         models.Date.create_date(
-            task=models.Planning.get(models.Planning.planning_name == planning_name).id
+            task=models.Planning.get(models.Planning.planning_name ==
+                                     planning_name).id
         )
     return render_template('addtask.html', form=form)
 
@@ -98,7 +100,7 @@ def planning(planning_name):
                            planning=models.Planning.get((models.Planning.
                                                          planning_name) ==
                                                         planning_name),
-                           tasks=['01-03-2017', '02-03-2017']
+                           tasks=planning.Task.select()
                            )
 
 
