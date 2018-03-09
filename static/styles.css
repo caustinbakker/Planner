@@ -119,7 +119,7 @@ progress{
     top: 33%;
     justify-content: center;
 }
-#display_task, #display_task-1{
+.display_task, .display_task-placeholder{
     z-index: 0;
     display: inline-block;
     background: red;
@@ -128,16 +128,16 @@ progress{
     box-shadow: 0 0 0 green;
     transition: z-index 5s, box-shadow 1s 0.5s ease;
     margin: 0 1px;
-}
-#display_task-1{
-    background: blue;
-    color: blue;
-    left: -2px;
-}
-#display_task:hover, #display_task-1:hover {
-    box-shadow: 15px 0 0;
-    z-index: 100;
 
+}
+.display_task-placeholder{
+    opacity: 0;
+}
+#display_task-start{
+    border-radius: 10px 10px 0 0;
+}
+#display_task-end{
+    border-radius: 0 0 10px 10px;
 }
 .task_name{
     writing-mode: vertical-rl;
