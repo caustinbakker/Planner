@@ -29,6 +29,7 @@ class Planning(Model):
 class Task(Model):
     planning = ForeignKeyField(Planning, backref='Task')
     task = CharField()
+    task_num = IntegerField(unique=True)
     start_date = DateTimeField()
     end_date = DateTimeField()
     desc = CharField()

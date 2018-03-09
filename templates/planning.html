@@ -10,7 +10,7 @@
         <div id="created_at">{{ created_at }}</div>
         <div>{{ days_left }} day(s) Left</div>
     </div>
-    <progress id='procent' value="50" max="100">{{procent}}%</progress>
+    <progress id='procent' value="{{ procent }}" max="100">{{procent}}%</progress>
 </header>
 
 <ul>
@@ -21,9 +21,12 @@
                 <content class="grid-container">
                     <div class='display_task_list'>
                         {% for task in tasks %}
-                            <div class='task_name'> {{ task.task }} 1234 </div>
+
                             {% for task_date in task.Date.select() %}
                                     {% if datevalue == task_date.date.__format__('%d-%m-%Y') %}
+                                        {% for task_num in range(task.task_num) %}
+                                            <li id='display_task-1'></li>
+                                        {% endfor %}
                                         <li id='display_task'></li>
                                     {% endif %}
                             {% endfor %}
@@ -39,5 +42,5 @@
                 </content>
                 {% endfor %}
 </ul>
-
+{{planning.Task.id }}
 {% endblock %}
